@@ -9,7 +9,7 @@ function Layout({ children, title }) {
         <title>{title}</title>
         <meta
           name="description"
-          content="this site iscreated by mahdi soultana with React/nextjs i hoope you like it if yes contact me in linkding @mahdisoultana or Mahdi_soultana in fiver or upwork"
+          content="this site is created by mahdi soultana with React/nextjs i hoope you like it if yes contact me in linkding @mahdisoultana or Mahdi_soultana in fiver or upwork"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta content="text/html;charset=UTF-8" />
