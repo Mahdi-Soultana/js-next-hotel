@@ -1,17 +1,23 @@
+import React from "react";
 import "../styles/globals.css";
 
-import { ReactQueryCacheProvider, QueryCache } from "react-query";
-import { Hydrate } from "react-query/hydration";
-
-const queryCache = new QueryCache();
-
+import { QueryClientProvider, QueryClient } from "react-query";
+import { ReactQueryDevtools } from "react-query/devtools";
+// import { Hydrate } from "react-query/hydration";
+import { Provider } from "react-redux";
+import store from "../redux/store";
 function MyApp({ Component, pageProps }) {
+  const client = new QueryClient();
+
   return (
-    <ReactQueryCacheProvider queryCache={queryCache}>
-      <Hydrate state={pageProps.dehydratedState}>
+    <Provider store={store}>
+      <QueryClientProvider client={client}>
+        {/* // <Hydrate state={pageProps.dehydratedState}> */}
         <Component {...pageProps} />
-      </Hydrate>
-    </ReactQueryCacheProvider>
+        {/* // </Hydrate> */}
+        <ReactQueryDevtools />
+      </QueryClientProvider>
+    </Provider>
   );
 }
 

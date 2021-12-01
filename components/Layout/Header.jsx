@@ -1,16 +1,20 @@
 import React from "react";
-
+import { useRouter } from "next/router";
 function Header() {
+  const router = useRouter();
+  const toHome = () => router.push("/");
   return (
     <nav className="navbar row justify-content-center sticky-top">
       <div className="container">
         <div className="col-3 p-0">
-          <div className="navbar-brand">
-            <img
-              style={{ cursor: "pointer" }}
-              src="/images/bookit_logo.png"
-              alt="BookIT"
-            />
+          <div onClick={toHome}>
+            <div className="navbar-brand">
+              <img
+                style={{ cursor: "pointer" }}
+                src="/images/bookit_logo.png"
+                alt="BookIT"
+              />
+            </div>
           </div>
         </div>
 

@@ -1,8 +1,11 @@
 module.exports = {
+  images: {
+    domains: ["res.cloudinary.com"],
+  },
   reactStrictMode: true,
   env: {
     MONGODB_URI:
-      "mongodb+srv://nextwithmongoose:collqYUVIiw6uFsh@cluster0.z2ovf.mongodb.net/hotels?retryWrites=true&w=majority",
+      "mongodb+srv://mongoDBConnection:4PW5obQUjGmqOff4@mongodbconnection.wguh0.mongodb.net/hotelroom?retryWrites=true",
   },
 };
 

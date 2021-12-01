@@ -1,25 +1,23 @@
 import Layout from "../components/Layout/index";
 import Home from "../components/Home";
-
-import { QueryCache } from "react-query";
-import { dehydrate } from "react-query/hydration";
-
+import useFetchQuery from "../hooks/useFetchQuery";
+//
+import { getData } from "../utils/NormalFecth";
+import { getRoomsURL } from "../utils/BaseURL";
 export async function getStaticProps() {
-  const queryCache = new QueryCache();
-
-  await queryCache.prefetchQuery("posts", getPosts);
+  const rooms = await getData(getRoomsURL);
 
   return {
     props: {
-      dehydratedState: dehydrate(queryCache),
+      rooms: rooms ? rooms : "no data",
     },
   };
 }
-export default function Index() {
-  const { data } = useQuery("posts", getPosts);
+
+export default function Index(props) {
   return (
     <Layout title="Book the Best Room for your Holiday">
-      <Home />
+      <Home data={props.rooms} />
     </Layout>
   );
 }
