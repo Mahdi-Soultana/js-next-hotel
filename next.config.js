@@ -9,4 +9,4 @@ module.exports = {
   },
 };
 
-// mongodb+srv://nextwithmongoose:<password>@cluster0.z2ovf.mongodb.net/myFirstDatabase?retryWrites=true&w=majority
+
