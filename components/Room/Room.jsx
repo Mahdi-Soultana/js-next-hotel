@@ -1,7 +1,7 @@
 import React from "react";
 import { getRoomURL } from "../../utils/BaseURL";
 import { getData } from "../../utils/NormalFecth";
-
+import { FaTimes, FaCheck } from "react-icons/fa";
 // export async function getStaticProps(context) {
 //     const id = context.prams._id;
 //     const room = getData(getRoomURL())
@@ -12,11 +12,12 @@ import { getData } from "../../utils/NormalFecth";
 //     }
 // }
 
-function Room({ room }) {
+function Room({ room: { room } }) {
   console.log(room);
+
   return (
     <div className="container container-fluid">
-      <h2 className="mt-5">2 bedroom Galiyaat view apartment.(one)</h2>
+      <h2 className="mt-5">{room.name}</h2>
 
       <div className="ratings mt-auto mb-3">
         <div className="rating-outer">
@@ -26,7 +27,7 @@ function Room({ room }) {
       </div>
 
       <img
-        src="https://a0.muscache.com/im/pictures/a8f6a489-d236-4d2d-a57b-a95d928970af.jpg?im_w=960"
+        src={room.images[0].url}
         className="d-block w-100 property-details-image m-auto"
         alt="Hotel"
       />
@@ -34,34 +35,39 @@ function Room({ room }) {
       <div className="row my-5">
         <div className="col-12 col-md-6 col-lg-8">
           <h3>Description</h3>
-          <p>
-            We are offering fully furnished apartment with your all basic needs
-            being fulfilled. It consists of 2 king size bed room with a
-            beautiful view in the living room, it also has a fully operational
-            kitchen with microwave and basic crockery. Beside all it has a
-            amazing balcony infront of valley view.
-          </p>
+          <p>{room.description}</p>
 
           <div className="features mt-5">
             <h3 className="mb-4">Features:</h3>
             <div className="room-feature">
               <i className="fa fa-cog fa-fw fa-users" aria-hidden="true"></i>
-              <p>6 Guests</p>
+              <p>{room.capacity} Guests</p>
             </div>
 
             <div className="room-feature">
               <i className="fa fa-cog fa-fw fa-bed" aria-hidden="true"></i>
-              <p>2 Beds</p>
+              <p>{room.numOfBeds} Beds</p>
             </div>
-
+            {/* //////////////////////// */}
             <div className="room-feature">
-              <i className="fa fa-cog fa-fw fa-bath" aria-hidden="true"></i>
-              <p>2 Baths</p>
+              <i aria-hidden="true">{checkStatus(room.petsAllowed)}</i>
+              <p> petsAllowed</p>
             </div>
-
             <div className="room-feature">
-              <i className="fa fa-cog fa-fw fa-cutlery" aria-hidden="true"></i>
-              <p>Kitchen</p>
+              <i aria-hidden="true"> {checkStatus(room.internet)}</i>
+              <p> Internet</p>
+            </div>
+            <div className="room-feature">
+              <i aria-hidden="true">{checkStatus(room.breakfast)} </i>
+              <p>{room.breakfast} breakfast</p>
+            </div>
+            <div className="room-feature">
+              <i aria-hidden="true">{checkStatus(room.airConditioned)}</i>
+              <p>airConditioned</p>
+            </div>
+            <div className="room-feature">
+              <i aria-hidden="true"> {checkStatus(room.cleaningRoom)}</i>
+              <p> cleaningRoom</p>
             </div>
           </div>
         </div>
@@ -69,7 +75,7 @@ function Room({ room }) {
         <div className="col-12 col-md-6 col-lg-4">
           <div className="booking-card shadow-lg p-4">
             <p className="price-per-night">
-              <b>$28</b> / night
+              <b>${room.pricePerNight}</b> / night
             </p>
 
             <button className="btn btn-block py-3 booking-btn">Pay</button>
@@ -105,3 +111,11 @@ function Room({ room }) {
 }
 
 export default Room;
+
+function checkStatus(bool) {
+  let status = [
+    <FaCheck key="1" color="green" />,
+    <FaTimes key="2" color="red" />,
+  ];
+  return bool ? status[0] : status[1];
+}
