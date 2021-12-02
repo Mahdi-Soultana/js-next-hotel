@@ -373,7 +373,7 @@ nav {
 
 /* Footer */
 footer {
-  margin-top: 6rem;
+  margin-top: 3rem;
   color: grey;
   bottom: 0;
   width: 100%;
@@ -455,6 +455,8 @@ input::placeholder {
 
 .page-link {
   color: #e61e4d;
+  font-size: 1.3rem;
+  padding: 0.6rem 1.2rem;
 }
 
 .page-link:hover {

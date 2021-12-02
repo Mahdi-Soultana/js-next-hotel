@@ -4,12 +4,12 @@ import useFetchQuery from "../hooks/useFetchQuery";
 //
 import { getData } from "../utils/NormalFecth";
 import { getRoomsURL } from "../utils/BaseURL";
-export async function getStaticProps() {
-  const rooms = await getData(getRoomsURL);
+export async function getServerSideProps(context) {
+  const data = await getData(getRoomsURL);
 
   return {
     props: {
-      rooms: rooms ? rooms : "no data",
+      data: data ? data : {},
     },
   };
 }
@@ -17,7 +17,7 @@ export async function getStaticProps() {
 export default function Index(props) {
   return (
     <Layout title="Book the Best Room for your Holiday">
-      <Home data={props.rooms} />
+      <Home data={props.data} />
     </Layout>
   );
 }
