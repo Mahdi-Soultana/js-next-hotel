@@ -11,9 +11,10 @@ export async function allRooms(req, res) {
     }
   }
   let skip = ((+req.query.page || 1) - 1) * 2;
+
   try {
     const rooms = await RoomModel.find(req.query)
-      .limit(4)
+      .limit(2)
       .skip(skip)
       .sort(req.query.order || "");
     const counts = await RoomModel.count(req.query);
