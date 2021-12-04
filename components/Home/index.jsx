@@ -14,29 +14,27 @@ function Home({ data: dataInit }) {
   const [pageNum, setPageNum] = useState(1);
   const router = useRouter();
 
-  const [path, sePath] = useState(() => router.asPath.replace("/?page=1", ""));
+  const [path, sePath] = useState(() => router.asPath.replace("/?", ""));
   const [url, setUrl] = useState("");
 
   let { data, isLoading, isError } = useQuery(
-    "page " + pageNum,
+    getRoomsURL + "?page=" + pageNum + path,
     async function () {
-      let url = getRoomsURL + "?page=" + pageNum + path;
+      let url = getRoomsURL + "?page=" + pageNum + "&" + path;
       console.log(url);
-      return await getData(url);
+      let data = await getData(url);
+      console.log(data);
+
+      return data;
     },
     {
-      initialData: dataInit,
       refetchOnWindowFocus: false,
       retryOnMount: true,
       refetchOnReconnect: false,
       cacheTime: 100000,
     },
   );
-  useEffect(() => {
-    console.log(path);
-    // eachTimethe route change the serverside render also !!!!
-    // router.push("/" + url.replace("/api/rooms", ""));
-  }, [pageNum]);
+
   const handelPaginationChange = (pageNumber) => {
     setPageNum((prevNum) => pageNumber);
   };
@@ -60,15 +58,14 @@ function Home({ data: dataInit }) {
           ) : (
             (!data?.rooms?.length && <h1>Loading... </h1>) || "noData"
           )}
-          {}
         </div>
       </section>
       <div className="d-flex justify-content-center mt-5">
-        {data && !isLoading && !isError && (
+        {data?.rooms && !isLoading && !isError && (
           <Pagination
             activePage={pageNum}
-            itemsCountPerPage={data.countPerPage}
-            totalItemsCount={data.totalCount}
+            itemsCountPerPage={data.countPerPage || 0}
+            totalItemsCount={data.totalCount || 0}
             onChange={handelPaginationChange}
             itemClass="page-item"
             linkClass="page-link"

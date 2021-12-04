@@ -13,7 +13,7 @@ function index() {
     const { address, capacity, category } = search;
     //logic
     if (address === "all" && capacity === "all" && category === "all") {
-      router.push(`/?page=1`);
+      router.push(`/`);
     } else {
       let urlQuery = "";
 
@@ -24,7 +24,7 @@ function index() {
         }
       }
 
-      router.push(`/?page=1&${urlQuery}`);
+      router.push(`/?${urlQuery}`);
     }
   }
   function handelChange(e) {
