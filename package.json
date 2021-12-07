@@ -6,7 +6,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "dbInit": " env-cmd -f ./.env.local node dbInit/init.js"
+    "dbInit": "env-cmd -f ./.env.local node dbInit/init.js"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
