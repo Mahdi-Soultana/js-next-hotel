@@ -10,7 +10,7 @@ export async function allRooms(req, res) {
       delete req.query.address;
     }
   }
-  let skip = ((+req.query.page || 1) - 1) * 2;
+  let skip = ((Math.abs(+req.query.page) || 1) - 1) * 2;
 
   try {
     const rooms = await RoomModel.find(req.query)
