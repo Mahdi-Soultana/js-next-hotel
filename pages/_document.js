@@ -16,6 +16,23 @@ class MyDocument extends Document {
             type="text/css"
             href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
           />
+
+          <meta
+            name="description"
+            content="
+        Hey 👋 I' MahdiSoultana,Mahdi-Soultana a  web developer   by ReactJs / NodeJS  JavaScript HTML CSS :
+        you can checkout my project here on upwork or see my portfolio !
+        https://github.com/Mahdi-Soultana
+        https://www.linkedin.com/in/mahdisoultana/
+        https://twitter.com/mahdi_soultana
+        https://www.upwork.com/freelancers/~01c3b60e1c04398fd9
+        skype Id: live:.cid.4c11f2bc899ffbc0
+        Thank you very much for your interest and I hope to start solving your problem right now 😊"
+          />
+          <meta
+            name="keywords"
+            content="mahdisoultana mahdi_soultana Mahdi-Soultana MahdiSoultana  web developer   by ReactJs / NodeJS  JavaScript HTML CSS"
+          />
           <link
             rel="stylesheet"
             type="text/css"
